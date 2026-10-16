@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دعوت به تورنمنت Esport</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap">
+<style>
+:root{--bg:#f3f1ff;--card:#fff;--text:#1d1b2e;--muted:#6a6785;--accent:#6c3df5;--accent2:#00b8d9;--line:#e0dbf7;--ok:#16a34a;--err:#dc2626;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0b1a;--card:#171430;--text:#f1eeff;--muted:#a29fc4;--accent:#9a7bff;--accent2:#35d6f5;--line:#2a2650}}
+:root[data-theme="dark"]{--bg:#0d0b1a;--card:#171430;--text:#f1eeff;--muted:#a29fc4;--accent:#9a7bff;--accent2:#35d6f5;--line:#2a2650}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.8;
+background-image:radial-gradient(circle at 85% 0,rgba(108,61,245,.28),transparent 45%),radial-gradient(circle at 0 100%,rgba(0,184,217,.22),transparent 45%)}
+.wrap{max-width:480px;margin:0 auto;padding:20px 16px 40px}
+.prog{display:flex;gap:6px;margin-bottom:6px}
+.prog i{flex:1;height:6px;border-radius:6px;background:var(--line);transition:.3s}
+.prog i.on{background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.stepname{color:var(--muted);font-size:13px;margin-bottom:14px}
+.hero{text-align:center;padding:34px 18px;border-radius:26px;color:#fff;background:linear-gradient(135deg,#6c3df5,#00b8d9);box-shadow:0 12px 40px rgba(108,61,245,.35)}
+.hero .icon{font-size:50px}.hero h1{margin:6px 0;font-size:32px;font-weight:900;line-height:1.4}.hero p{margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:14px}
+.card h2{margin:0 0 10px;font-size:17px;color:var(--accent)}
+.row{display:flex;gap:10px;margin:4px 0}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.count div{background:var(--bg);border-radius:14px;padding:8px 2px}
+.count b{display:block;font-size:22px;font-weight:900;color:var(--accent);direction:ltr}
+.count small{color:var(--muted);font-size:12px}
+label.q{display:block;font-weight:700;margin:14px 0 6px}
+input[type=text],input[type=tel],select,textarea{width:100%;font:inherit;padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--text)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit;cursor:pointer}
+.opt.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav{display:flex;gap:10px;margin-top:18px}
+.btn{flex:1;font:inherit;font-weight:700;padding:13px;border-radius:14px;border:2px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+.btn.main{background:var(--accent);color:#fff}
+.err{color:var(--err);font-size:13px;min-height:20px;margin-top:10px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.chk input{margin-top:7px;width:18px;height:18px}
+.sum{width:100%;border-collapse:collapse;font-size:14px}
+.sum td{padding:7px 4px;border-bottom:1px dashed var(--line);vertical-align:top}
+.sum td:first-child{color:var(--muted);width:38%}
+.ticket{text-align:center;border-radius:22px;padding:26px 16px;color:#fff;background:linear-gradient(135deg,#6c3df5,#00b8d9)}
+.ticket h2{margin:4px 0;font-size:24px}.ticket .code{font-size:26px;font-weight:900;letter-spacing:3px;direction:ltr;background:rgba(255,255,255,.2);border-radius:12px;padding:6px;margin:12px 0}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="prog" id="prog"></div>
+  <div class="stepname" id="stepname"></div>
+
+  <!-- مرحله ۰ -->
+  <section data-step="0">
+    <div class="hero"><div class="icon">🏆</div><h1>تورنمنت بزرگ<br>Esport</h1><p>برای ثبت‌نام در مسابقه دعوت شده‌اید</p></div>
+    <div class="card"><h2>⏳ تا شروع مسابقه</h2>
+      <div class="count"><div><b id="d">--</b><small>روز</small></div><div><b id="h">--</b><small>ساعت</small></div><div><b id="m">--</b><small>دقیقه</small></div><div><b id="s">--</b><small>ثانیه</small></div></div></div>
+    <div class="card"><h2>اطلاعات مسابقه</h2>
+      <div class="row"><span>📅</span><span>جمعه ۱۵ آبان ۱۴۰۵، ساعت ۱۰ صبح</span></div>
+      <div class="row"><span>📍</span><span>گیم‌نت مرکزی (آدرس را اینجا بنویسید)</span></div>
+      <div class="row"><span>💰</span><span>جایزه نفر اول: ۱۰ میلیون تومان</span></div>
+      <div class="row"><span>🎟️</span><span>ظرفیت: ۶۴ نفر</span></div></div>
+  </section>
+
+  <!-- مرحله ۱ -->
+  <section data-step="1" class="hide">
+    <div class="card"><h2>👤 اطلاعات شخصی</h2>
+      <label class="q">نام و نام خانوادگی</label><input type="text" id="name">
+      <label class="q">نام کاربری در بازی (Gamer Tag)</label><input type="text" id="tag" style="direction:ltr;text-align:left">
+      <label class="q">شماره موبایل</label><input type="tel" id="phone" placeholder="09xxxxxxxxx" style="direction:ltr;text-align:left">
+      <label class="q">بازه سنی</label><div class="opts" data-key="age"></div>
+    </div>
+  </section>
+
+  <!-- مرحله ۲ -->
+  <section data-step="2" class="hide">
+    <div class="card"><h2>🎮 بازی و حالت مسابقه</h2>
+      <label class="q">در کدام بازی شرکت می‌کنی؟</label><div class="opts" data-key="game"></div>
+      <label class="q">حالت شرکت</label><div class="opts" data-key="mode"></div>
+      <div id="teamBox" class="hide"><label class="q">نام تیم</label><input type="text" id="team">
+        <label class="q">تعداد اعضای تیم</label><div class="opts" data-key="size"></div></div>
+    </div>
+  </section>
+
+  <!-- مرحله ۳ -->
+  <section data-step="3" class="hide">
+    <div class="card"><h2>📊 تجربه و تجهیزات</h2>
+      <label class="q">سطح تجربه</label><div class="opts" data-key="level"></div>
+      <label class="q">ساعت بازی در هفته</label><div class="opts" data-key="hours"></div>
+      <label class="q">پلتفرم</label><div class="opts" data-key="platform"></div>
+      <label class="q">تجهیزات خودت را میاری؟</label><div class="opts" data-key="gear"></div>
+      <label class="q">قبلاً در تورنمنت شرکت کرده‌ای؟</label><div class="opts" data-key="past"></div>
+    </div>
+  </section>
+
+  <!-- مرحله ۴ -->
+  <section data-step="4" class="hide">
+    <div class="card"><h2>📝 آخرین جزئیات</h2>
+      <label class="q">سایز تی‌شرت اختصاصی</label><div class="opts" data-key="size_ts"></div>
+      <label class="q">ترجیح ساعت اولین بازی</label><div class="opts" data-key="slot"></div>
+      <label class="q">از کجا خبر مسابقه را شنیدی؟</label>
+      <select id="src"><option value="">انتخاب کنید</option><option>دوستان</option><option>اینستاگرام</option><option>تلگرام</option><option>گیم‌نت</option><option>سایر</option></select>
+      <label class="q">توضیحات یا درخواست خاص (اختیاری)</label><textarea id="note" rows="3"></textarea>
+      <div class="chk"><input type="checkbox" id="rules"><label for="rules">قوانین مسابقه را خوانده‌ام و می‌پذیرم؛ تقلب و رفتار غیرورزشی منجر به حذف می‌شود.</label></div>
+    </div>
+  </section>
+
+  <!-- مرحله ۵ -->
+  <section data-step="5" class="hide">
+    <div class="card"><h2>✅ مرور اطلاعات</h2><table class="sum" id="sum"></table></div>
+  </section>
+
+  <!-- پایان -->
+  <section data-step="6" class="hide">
+    <div class="ticket"><div style="font-size:48px">🎟️</div><h2>ثبت‌نام انجام شد!</h2><div id="tname"></div><div class="code" id="code"></div><div>این کد را روز مسابقه همراه داشته باش</div></div>
+    <div class="nav"><button class="btn" id="again">ثبت‌نام جدید</button></div>
+  </section>
+
+  <div class="err" id="err"></div>
+  <div class="nav" id="nav"><button class="btn" id="back">قبلی</button><button class="btn main" id="next">شروع ثبت‌نام</button></div>
+</div>
+
+<script>
+var CH={
+ age:["زیر ۱۶","۱۶ تا ۲۰","۲۱ تا ۲۵","۲۶ تا ۳۰","بالای ۳۰"],
+ game:["Valorant","CS2","PUBG Mobile","Call of Duty Mobile","EA FC","League of Legends"],
+ mode:["انفرادی","تیمی"],
+ size:["۲ نفره","۳ نفره","۵ نفره"],
+ level:["مبتدی","متوسط","حرفه‌ای","نیمه‌حرفه‌ای"],
+ hours:["کمتر از ۵","۵ تا ۱۵","۱۵ تا ۳۰","بیش از ۳۰"],
+ platform:["PC","موبایل","کنسول"],
+ gear:["بله، همه چیز","فقط هدست و موس","نه، از سایت استفاده می‌کنم"],
+ past:["بله","خیر"],
+ size_ts:["S","M","L","XL","XXL"],
+ slot:["صبح","ظهر","عصر","فرقی ندارد"]
+};
+var LBL={age:"بازه سنی",game:"بازی",mode:"حالت",size:"اعضای تیم",level:"سطح",hours:"ساعت بازی",platform:"پلتفرم",gear:"تجهیزات",past:"سابقه تورنمنت",size_ts:"سایز تی‌شرت",slot:"ساعت ترجیحی"};
+var NAMES=["دعوتنامه","اطلاعات شخصی","بازی و حالت","تجربه و تجهیزات","جزئیات پایانی","مرور و تأیید","پایان"];
+var step=0,D={};
+var $=function(i){return document.getElementById(i)};
+
+document.querySelectorAll(".opts").forEach(function(box){
+  var k=box.dataset.key;
+  CH[k].forEach(function(t){
+    var b=document.createElement("button");b.type="button";b.className="opt";b.textContent=t;
+    b.onclick=function(){D[k]=t;box.querySelectorAll(".opt").forEach(function(x){x.classList.toggle("on",x===b)});if(k==="mode")$("teamBox").classList.toggle("hide",t!=="تیمی")};
+    box.appendChild(b);
+  });
+});
+
+var prog=$("prog");for(var i=0;i<6;i++){prog.appendChild(document.createElement("i"))}
+
+function render(){
+  document.querySelectorAll("section").forEach(function(s){s.classList.toggle("hide",+s.dataset.step!==step)});
+  prog.querySelectorAll("i").forEach(function(x,i){x.classList.toggle("on",i<=Math.min(step,5))});
+  $("stepname").textContent=step<6?"مرحله "+(step+1)+" از ۶ · "+NAMES[step]:"";
+  prog.style.display=step<6?"flex":"none";
+  $("nav").style.display=step<6?"flex":"none";
+  $("back").style.display=step===0?"none":"block";
+  $("next").textContent=step===0?"شروع ثبت‌نام":step===5?"ثبت نهایی 🚀":"مرحله بعد";
+  $("err").textContent="";
+  if(step===5)summary();
+  window.scrollTo(0,0);
+}
+
+function validate(){
+  if(step===1){
+    if($("name").value.trim().length<3)return"نام و نام خانوادگی را کامل وارد کن.";
+    if(!$("tag").value.trim())return"نام کاربری بازی را وارد کن.";
+    if(!/^09\d{9}$/.test($("phone").value.trim().replace(/[۰-۹]/g,function(c){return"۰۱۲۳۴۵۶۷۸۹".indexOf(c)})))return"شماره موبایل معتبر نیست.";
+    if(!D.age)return"بازه سنی را انتخاب کن.";
+  }
+  if(step===2){
+    if(!D.game)return"بازی را انتخاب کن.";
+    if(!D.mode)return"حالت شرکت را انتخاب کن.";
+    if(D.mode==="تیمی"&&(!$("team").value.trim()||!D.size))return"نام و اندازه تیم را کامل کن.";
+  }
+  if(step===3){
+    for(var k of["level","hours","platform","gear","past"])if(!D[k])return"همه سؤال‌ها را پاسخ بده.";
+  }
+  if(step===4){
+    if(!D.size_ts||!D.slot)return"سایز تی‌شرت و ساعت ترجیحی را انتخاب کن.";
+    if(!$("src").value)return"بگو از کجا خبردار شدی.";
+    if(!$("rules").checked)return"برای ادامه باید قوانین را بپذیری.";
+  }
+  return"";
+}
+
+function summary(){
+  var rows=[["نام",$("name").value],["Gamer Tag",$("tag").value],["موبایل",$("phone").value]];
+  ["age","game","mode"].forEach(function(k){rows.push([LBL[k],D[k]])});
+  if(D.mode==="تیمی")rows.push(["تیم",$("team").value+" ("+D.size+")"]);
+  ["level","hours","platform","gear","past","size_ts","slot"].forEach(function(k){rows.push([LBL[k],D[k]])});
+  rows.push(["منبع خبر",$("src").value]);
+  if($("note").value.trim())rows.push(["توضیحات",$("note").value]);
+  $("sum").innerHTML=rows.map(function(r){return"<tr><td></td><td></td></tr>"}).join("");
+  $("sum").querySelectorAll("tr").forEach(function(tr,i){tr.children[0].textContent=rows[i][0];tr.children[1].textContent=rows[i][1]});
+}
+
+$("next").onclick=function(){
+  var e=validate();if(e){$("err").textContent=e;return}
+  if(step===5){
+    var c="ESP-"+Math.random().toString(36).slice(2,6).toUpperCase()+"-"+Math.floor(100+Math.random()*900);
+    $("code").textContent=c;$("tname").textContent=$("tag").value+" · "+D.game;
+    try{localStorage.setItem("esport_reg",c)}catch(x){}
+  }
+  step++;render();
+};
+$("back").onclick=function(){step=Math.max(0,step-1);render()};
+$("again").onclick=function(){location.reload()};
+
+var target=new Date("2026-11-06T10:00:00+03:30").getTime();
+function pad(n){return String(n).padStart(2,"0")}
+function tick(){var f=Math.max(0,target-Date.now());
+ $("d").textContent=Math.floor(f/864e5);$("h").textContent=pad(Math.floor(f%864e5/36e5));
+ $("m").textContent=pad(Math.floor(f%36e5/6e4));$("s").textContent=pad(Math.floor(f%6e4/1e3))}
+tick();setInterval(tick,1000);render();
+</script>
+</body>
+</html>
